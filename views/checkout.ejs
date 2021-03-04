@@ -1,0 +1,80 @@
+<div class = "cart-container" style="padding-top: 50px;">
+    <div class="card mb-3 position">
+      <div class="row">
+        <h1 style="margin-left: auto; margin-right: auto;"> Items in Order</h1>
+      </div>
+    </div>
+    <div class="card mb-3 position">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% 
+      if(cartItems.length > 0){
+        console.log('Cart Items after delete : ',cartItems);
+      for(let cartItem of cartItems) {%>
+              <tr>
+                <td><%= cartItem.itemid.name %></td>
+                <td><%= cartItem.itemid.price %>&#36;</td>
+                <td><%= cartItem.quantity %></td>
+              </tr>
+      <%}}%>
+      <tr>
+        <td></td>
+        <td>TAX</td>
+        <td><%= tax %>&#36;</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>TOTAL</td>
+        <td id="totalamount" ><%= netamount %>&#36;</td>
+      </tr>  
+    </tbody>
+    </table>
+    </div>
+      <div class="card mb-3 position">
+      <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-6">
+        <button id="#orderbtn" class = "btn btn-primary orderbtn" data-toggle="modal" data-target="#myOrderModal" >
+            ORDER
+        </button>
+      </div>  
+      <div class="col-md-3"></div>  
+      </div>
+      </div>
+  
+  </div> 
+
+  <div class="modal fade" id="myOrderModal"  >
+    <div class="modal-dialog" >
+      <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">
+                Order Confirmation
+            </div>    
+          <button class="close" type="button" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+        <p>Are You sure you want to place this order ? </p>
+        <div class="row" >
+        <div class="col-md-6"> 
+        </div>
+        <div class="col-md-6"> 
+        <button  type="button" class="btn btn-success yesbtn" id="yesbtn"  >YES</button>
+        <button  type="button" class="btn btn-danger nobtn" id="nobtn"  >NO</button>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div> 
+
+
+  
+  

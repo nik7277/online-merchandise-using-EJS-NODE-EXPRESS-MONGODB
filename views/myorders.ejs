@@ -1,0 +1,43 @@
+<div class = "bookings-container" style="padding-top: 50px;">
+  <div class="card mb-3 position">
+    <div class="row">
+      <h1 style="margin-left: auto; margin-right: auto;"> YOUR ORDERS </h1>
+    </div>
+  </div>
+    <% for(let order of myorders) {%>
+      <div class = "order-container" style="padding-top: 50px;">
+        <div class="card mb-3 position">
+          <div class="row">
+            <h2 style="margin-left: auto; margin-right: auto;"> Items in Order <%= order._id %></h2>
+          </div>
+        </div>
+        <div class="card mb-3 position">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+          <% 
+          if(order.item.length > 0){
+          for(let cartItem of order.item) {%>
+                  <tr>
+                    <td><%= cartItem.itemid.name %></td>
+                    <td><%= cartItem.itemid.price %>&#36;</td>
+                    <td><%= cartItem.quantity %></td>
+                  </tr>
+          <%}}%>
+          <tr>
+            <td></td>
+            <td>TOTAL</td>
+            <td id="totalamount" ><%= order.total_amount %>&#36;</td>
+          </tr>  
+        </tbody>
+        </table>
+        </div>
+    </div>  
+  <%}%>
+</div>

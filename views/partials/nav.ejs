@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div class="flex-grow-1 d-flex">
+        <div class="form-inline my-2 my-lg-0 mx-lg-auto">
+          <label class="text-white"  for="filter">Filter</label>
+          <select name = "filter" id="filter" class="custom-select mr-sm-2" >
+            <!-- <option selected>Filter</option> -->
+            <option selected name = "All" value="All">All</option>
+            <option name = "ts" value="T-Shirts">Tshirts</option>
+            <option name = "af" value="Action Figures">Action Figures</option>
+            <option name = "pc" value="Phone Cases">Phone Cases</option>
+          </select>
+          <input id = "search_for_item" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id = "filter-search" class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+        </div>
+      </div>
+      <div class="d-flex flex-row-reverse">
+        <ul class="navbar-nav mr-auto">
+          <% if(locals.user){%> 
+            <li class="nav-item dropdown">
+              <button class="text-white nav-link dropdown-toggle btn btn-warning" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=locals.user.name%></button>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 4px; left: auto;">
+                  <a class="dropdown-item" id = "cart-button" href="#">View Cart</a>
+                  <a class="dropdown-item" id = "button-orders" href="#">My Orders</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Log Out</a>
+                </div>
+            </li>
+          <% }else{ %>
+          <% if(locals.msg){
+            console.log(locals.msg);
+             alert(locals.msg);}%>
+            <li class="nav-item" style="padding-right: 5px;">
+              <button class="btn btn-warning my-2 my-sm-0" id="register" type="submit" data-toggle="modal" data-target="#myRegisterModal">Register</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-warning my-2 my-sm-0" id="login" type="submit" , data-toggle="modal" data-target="#myLoginModal">Login</button>
+            </li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="myRegisterModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">×</button>
+        </div>
+        <!-- Modal body-->
+        <div class="modal-body">
+          <form class="form-container" method="POST">
+            <div class="form-group">
+              <label for="exampleInputName">Name</label>
+              <input class="form-control"  id = "Register-name" name="name" type="text" placeholder="Enter name" required pattern="[A-Za-z]{3,}">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail">Email address</label>
+              <input class="form-control"  id = "Register-email" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword">Password</label>
+              <input class="form-control"  id = "Register-password" name="password" type="password" placeholder="Password" required pattern="([A-Za-z]|[0-9]|[_@]){8,}">
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea class="form-control"  id = "Register-address" name="address"  placeholder="Enter Full Address" required ></textarea>
+            </div>
+            <input class="btn btn-warning RegisterButton" value = "Register" id = "RegisterButton" type="button">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myLoginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">×</button>
+        </div>
+        <!-- Modal body-->
+        <div class="modal-body">
+          <form class="form-container" method="POST">
+            <div class="form-group">
+              <label for="exampleInputEmail">Email address</label>
+              <input class="form-control"  id = "Login-Email" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword">Password</label>
+              <input class="form-control"  id = "Login-Password" name="password" type="password" placeholder="Password" required pattern="([A-Za-z]|[0-9]|[_@]){8,}">
+            </div>
+            <input class="btn btn-warning RegisterButton" value = 'Login' id = "LoginButton" type="button">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

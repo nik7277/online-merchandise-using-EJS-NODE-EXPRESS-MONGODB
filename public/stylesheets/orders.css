@@ -1,0 +1,12 @@
+.bookings-container > .position{ 
+    max-width: 700px;
+    margin: 0 auto;
+}
+.position > .no-gutters {
+    border: 1px ;
+    box-shadow: 5px 5px 5px 5px #A9A9A9;
+    box-sizing: border-box; 
+}
+.position > .no-gutters:hover{
+    box-shadow: 10px 10px 10px 10px #696969;
+}
